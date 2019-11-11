@@ -9,6 +9,6 @@ Back-end is done using Springboot by connecting MongoDB.
 
 Basically there is a console application where Manager can perform CRUD on Vehicles and User can book a vehicle for Rent.
 
-### Switch to Development until work id done.
+### Switch to Development until work is done.
 
   
