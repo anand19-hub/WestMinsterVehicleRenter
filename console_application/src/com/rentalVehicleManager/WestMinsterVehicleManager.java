@@ -47,6 +47,11 @@ public class RentalVehicles implements VehicleCollection {
                     case 1:
                         Car c = new Car(plateNumber, make, "Car");
                 }
+
+            case 2:
+            case 3:
+                exit = true;
+                break;
         }
         return exit;
     }
