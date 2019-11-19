@@ -1,26 +1,48 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './styles/App.css';
+import VehicleContainer from './containers/VehicleContainer';
+import HeaderContainer from './containers/HeaderContainer';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    vehicles: [
+      {
+        plateNumber: 18920,
+        type: 'Car',
+        make: 'Toyota'
+      },
+      {
+        plateNumber: 78098,
+        type: 'Car',
+        make: 'BMW'
+      }, 
+      {
+        plateNumber: 24290,
+        type: 'Van',
+        make: 'Some Brand'
+      },
+      {
+        plateNumber: 67282,
+        type: 'Motor Bike',
+        make: 'Yamaha'
+      },
+      {
+        plateNumber: 34292,
+        type: 'Motor Bike',
+        make: 'Bajaj'
+      }
+    ]
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <HeaderContainer></HeaderContainer>
+        <VehicleContainer className="vehicleContainer" vehicles={this.state.vehicles}></VehicleContainer>
+      </div>
+    );
+  }
 }
 
 export default App;
+ 
