@@ -2,43 +2,44 @@ import React from 'react';
 import './styles/App.css';
 import VehicleContainer from './containers/VehicleContainer';
 import HeaderContainer from './containers/HeaderContainer';
+import axios from 'axios';
 
 class App extends React.Component {
-  state = {
-    vehicles: [
-      {
-        plateNumber: 18920,
-        type: 'Car',
-        make: 'Toyota'
-      },
-      {
-        plateNumber: 78098,
-        type: 'Car',
-        make: 'BMW'
-      }, 
-      {
-        plateNumber: 24290,
-        type: 'Van',
-        make: 'Some Brand'
-      },
-      {
-        plateNumber: 67282,
-        type: 'Motor Bike',
-        make: 'Yamaha'
-      },
-      {
-        plateNumber: 34292,
-        type: 'Motor Bike',
-        make: 'Bajaj'
-      }
-    ]
-  };
+  constructor(pros) {
+    super(pros);
+    this.state = {
+      vehicles: [],
+      search: '',
+      showOnlyAvailable: false
+    };
+  }
+
+  componentDidMount() {
+    axios.get('http://localhost:8080/getAllVehicles').then((response) => {
+      console.log(response)
+      this.setState({
+        vehicles: response.data
+      })
+    })
+  }
+
+  setShowOnlyAvailable() {
+    this.setState((state) => ({
+      showOnlyAvailable: !state.showOnlyAvailable
+    }))
+  }
 
   render() {
     return (
       <div className="App">
         <HeaderContainer></HeaderContainer>
-        <VehicleContainer className="vehicleContainer" vehicles={this.state.vehicles}></VehicleContainer>
+        <VehicleContainer 
+          className="vehicleContainer" 
+          vehicles={this.state.vehicles}
+          filterCondition={this.state.search}
+          setOnlyAvailable={this.setShowOnlyAvailable.bind(this)}
+          showOnlyAvailable={this.state.showOnlyAvailable}
+        ></VehicleContainer>
       </div>
     );
   }
