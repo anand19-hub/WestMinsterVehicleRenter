@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Vehicle from '../components/Vehicle';
+import ConfirmBooking from '../components/ConfirmBooking';
 import '../styles/VehicleContainer.css';
 import Container from '@material-ui/core/Container';
 import FormGroup from '@material-ui/core/FormGroup';
@@ -10,6 +11,8 @@ export class VehicleContainer extends Component {
     render() {
         const showAvaialbleOnly = this.props.showOnlyAvailable;
         const vehicles = showAvaialbleOnly ? this.props.vehicles.filter(vehicle => vehicle.available) : this.props.vehicles;
+
+        const showConfirmationModal = this.props.showConfirmationModal;
         
         return (
             <div className="body-container">
@@ -32,9 +35,17 @@ export class VehicleContainer extends Component {
                             key={vehicle.plateNumber} 
                             vehicle={vehicle}
                             showAvaialbleOnly={showAvaialbleOnly}
+                            // showConfirmationModal={showConfirmationModal}
                         />
                     )}
+
+                    {showConfirmationModal &&
+                        <ConfirmBooking>
+
+                        </ConfirmBooking>
+                    }
                 </Container>
+
             </div>
         )
     }

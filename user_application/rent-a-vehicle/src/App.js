@@ -10,7 +10,8 @@ class App extends React.Component {
     this.state = {
       vehicles: [],
       search: '',
-      showOnlyAvailable: false
+      showOnlyAvailable: false,
+      showConfirmation: false
     };
   }
 
