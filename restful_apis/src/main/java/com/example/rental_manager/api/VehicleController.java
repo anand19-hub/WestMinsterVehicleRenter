@@ -10,6 +10,7 @@ import java.util.List;
 // used to create RESTful web services.
 // takes care of mapping request data to the defined request handler method.
 // Once response body is generated from the handler method, it converts it to JSON or XML response.
+//@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class VehicleController {
 
@@ -34,9 +35,16 @@ public class VehicleController {
     public String deleteVehicle(@PathVariable("plateNumber") String plateNumber) {
         return this.vehicleService.deleteVehicle(plateNumber);
     }
+    @PutMapping("/bookVehicle/{plateNumber}")
+    public String bookAVehicle(@PathVariable("plateNumber") String plateNumber) { return this.vehicleService.bookAVehicle(plateNumber); }
 
     @GetMapping("/filterVehicles/{filter}/{option}")
     public List<Vehicle> filterVehicles(@PathVariable("filter") String filter, @PathVariable("option") String option ) {
         return this.vehicleService.filterVehicles(filter,option);
+    }
+
+    @GetMapping("/getAVehicle/{plateNumber}")
+    public Vehicle getAVehicle(@PathVariable("plateNumber") String plateNumber) {
+        return this.vehicleService.getVehicleByPlateNum(plateNumber);
     }
 }

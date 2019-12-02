@@ -2,10 +2,8 @@ package com.example.rental_manager.service;
 
 import com.example.rental_manager.model.Vehicle;
 import com.example.rental_manager.repo.VehicleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -24,7 +22,9 @@ public class VehicleService {
     }
 
     public List<Vehicle> getVehicles() {
-        return this.vehicleRepository.findAll();
+        List<Vehicle> vehicles = this.vehicleRepository.findAll();
+        System.out.println("Getting data from db: " + vehicles);
+        return vehicles;
     }
 
     public String deleteVehicle(String plateNumber) {
@@ -43,5 +43,18 @@ public class VehicleService {
                 break;
         }
         return filteredList;
+    }
+
+
+    public String bookAVehicle(String plateNumber) {
+        Vehicle vehicleToBook = this.getVehicleByPlateNum(plateNumber);
+        vehicleToBook.setAvailable(false);
+        this.vehicleRepository.save(vehicleToBook);
+        return "vehicle booked";
+    }
+
+    public  Vehicle getVehicleByPlateNum(String plateNum) {
+        Vehicle vehicle = this.vehicleRepository.findByPlateNumber(plateNum);
+        return vehicle;
     }
 }

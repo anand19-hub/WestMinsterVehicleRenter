@@ -15,4 +15,5 @@ public interface VehicleRepository extends MongoRepository<Vehicle, String> {
 
     List<Vehicle> findByType(String typeOptn);
     List<Vehicle> findByMake(String makeOptn);
+    Vehicle findByPlateNumber(String plateNum);
 }
