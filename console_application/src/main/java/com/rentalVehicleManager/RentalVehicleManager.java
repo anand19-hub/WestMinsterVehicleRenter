@@ -1,11 +1,15 @@
 package com.rentalVehicleManager;
 
-import java.io.IOException;
-
 public interface RentalVehicleManager {
-    public abstract void addVehicle(Vehicle vehicle) throws IOException;
+    void addVehicle(Vehicle vehicle);
 
-    public abstract void printAllVehicles() throws IOException;
+    void printAllVehicles();
 
-    public abstract void deleteVehicle(String delPlateNumber) throws IOException;
+    void deleteVehicle(String delPlateNumber);
+
+    void filterVehicles(String filter, String option);
+
+    void writeToCSV();
+
+    void openUserApplication();
 }
