@@ -1,14 +1,4 @@
 .headerBar {
-    background-color: #eb4034;
     display: flex;
     justify-content: space-between;
-}
-
-.searchDiv {
-    display: flex;
-    align-items: center;
-}
-
-.searchBox {
-    width: 200,
 }

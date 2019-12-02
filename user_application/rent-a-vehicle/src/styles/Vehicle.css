@@ -1,10 +1,23 @@
 .vehicleCard {
     width: 25%;
     height: 350px;
-    margin: 1%;;
+    margin: 1%;
+    font-size: 20px ;
 }
 
-img {
-    height: 50%;
-    width: 100%;
+/* div {
+    border: 1px solid black;
+} */
+
+.model_seats{
+    display: flex;
+    justify-content: space-between;
+}
+
+.seats span {
+    position: absolute;
+}
+
+.contentFooter {
+    font-size: 15px;
 }

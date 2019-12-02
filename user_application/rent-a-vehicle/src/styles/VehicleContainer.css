@@ -1,5 +1,18 @@
 .vehicleContainer {
     display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
+    flex-wrap: wrap;
+}
+
+/* .filterControllers {
+    justify-self: start;
+    display: flex;
+    flex-direction: row;
+} */
+.vehicles {
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
 }
